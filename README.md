@@ -26,3 +26,21 @@ TaskTitan is an advanced task management and productivity application designed t
 - **Drawer Navigation**: Provides an organized menu for additional settings and features, enhancing the overall user experience.
 
 TaskTitan is essential for anyone looking to streamline their tasks, harness rich data insights, and improve time management through an all-encompassing platform that adapts to the evolving needs of modern users.
+
+
+## Screeshots
+
+![Home-screen](./Screenshots/Img1.png)
+![Home-screen](./Screenshots/image3.png)
+![Home-screen](./Screenshots/image4.png)
+![Home-screen](./Screenshots/image5.png)
+![Home-screen](./Screenshots/image6.png)
+![Home-screen](./Screenshots/image7.png)
+![Home-screen](./Screenshots/image8.png)
+![Home-screen](./Screenshots/image9.png)
+![Home-screen](./Screenshots/image10.png)
+![Home-screen](./Screenshots/image11.png)
+![Home-screen](./Screenshots/image12.png)
+![Home-screen](./Screenshots/image13.png)
+![Home-screen](./Screenshots/image14.png)
+![Home-screen](./Screenshots/image15.png)
