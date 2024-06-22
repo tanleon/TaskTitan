@@ -3,6 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert, StyleSheet 
 import DatePicker from 'react-native-date-picker';
 import { getTask, updateTask } from "../services/Services";
 import { useUser } from '../context/UserContext';
+import styles from '../styles';  // Import global styles
 
 const TaskDetails = ({ route, navigation }) => {
     const { task_id } = route.params;
@@ -12,7 +13,7 @@ const TaskDetails = ({ route, navigation }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (user && user.user_id)    fetchTaskDetails();
+        if (user && user.user_id) fetchTaskDetails();
     }, [task_id]);
 
     const fetchTaskDetails = async () => {
@@ -84,48 +85,18 @@ const TaskDetails = ({ route, navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('CreateNote', { task_id: task.task_id })} // Ensure you have set up CreateNote in your navigator
+                onPress={() => navigation.navigate('CreateNote', { task_id: task.task_id })}
             >
                 <Text style={styles.buttonText}>Create Note</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('NoteList', { task_id: task.task_id })} // Ensure you have set up NotesList in your navigator
+                onPress={() => navigation.navigate('NoteList', { task_id: task.task_id })}
             >
                 <Text style={styles.buttonText}>View Notes</Text>
             </TouchableOpacity>
         </ScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-    },
-    input: {
-        fontSize: 18,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 10,
-        padding: 10,
-    },
-    button: {
-        backgroundColor: '#007BFF',
-        padding: 10,
-        borderRadius: 5,
-        marginTop: 10,
-        alignItems: 'center',
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 16,
-    },
-    center: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
 
 export default TaskDetails;

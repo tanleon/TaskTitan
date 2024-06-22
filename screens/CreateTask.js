@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'reac
 import DatePicker from 'react-native-date-picker';
 import { addTask } from "../services/Services";
 import { useUser } from '../context/UserContext';
+import styles from '../styles';
 
 const CreateTask = ({ route, navigation }) => {
     const { user } = useUser();
@@ -47,63 +48,43 @@ const CreateTask = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.label}>Title</Text>
+            <Text style={createTaskStyles.label}>Title</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Enter task title"
                 value={title}
                 onChangeText={setTitle}
             />
-            <Text style={styles.label}>Description</Text>
+            <Text style={createTaskStyles.label}>Description</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Enter task description"
                 value={description}
                 onChangeText={setDescription}
             />
-            <Text style={styles.label}>Due Date</Text>
+            <Text style={createTaskStyles.label}>Due Date</Text>
             <DatePicker
                 date={dueDate}
                 onDateChange={setDueDate}
                 mode="date"
                 locale="en"
             />
-            <TouchableOpacity style={styles.button} onPress={handleCreateTask}>
+            <TouchableOpacity style={createTaskStyles.button} onPress={handleCreateTask}>
                 <Text style={styles.buttonText}>Create Task</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#f0f0f0',
-    },
+// Local styles specific to CreateTask
+const createTaskStyles = StyleSheet.create({
     label: {
-        fontSize: 16,
+        ...styles.text.subtitle,
         marginBottom: 8,
     },
-    input: {
-        fontSize: 16,
-        backgroundColor: 'white',
-        padding: 10,
-        marginBottom: 20,
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#ccc',
-    },
     button: {
-        backgroundColor: '#007BFF',
-        padding: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5,
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 16,
+        ...styles.button,
+        marginTop: 20, // Adjust spacing
     },
 });
 

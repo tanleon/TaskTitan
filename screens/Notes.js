@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, SectionList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, SectionList, TouchableOpacity, StyleSheet } from 'react-native';
 import { getNotes, getTasks } from '../services/Services';
 import { useUser } from '../context/UserContext';
+import styles from '../styles'; // Import global styles
 
 const Notes = ({ navigation }) => {
     const { user } = useUser();
@@ -63,7 +64,7 @@ const Notes = ({ navigation }) => {
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
-            style={styles.itemContainer}
+            style={localStyles.itemContainer}
             onPress={() => navigation.navigate('NoteContent', {
                 noteId: item.note_id,
                 title: item.title,
@@ -71,19 +72,19 @@ const Notes = ({ navigation }) => {
                 onGoBack: fetchNotesAndTasks // Refresh notes list upon returning
             })}
         >
-            <Text style={styles.title}>{item.title}</Text>
+            <Text style={[styles.title, { fontWeight: 'bold' }]}>{item.title}</Text>
             <Text style={styles.content}>{item.content.length > 100 ? item.content.substring(0, 100) + '...' : item.content}</Text>
         </TouchableOpacity>
     );
 
     const renderSectionHeader = ({ section: { title } }) => (
-        <Text style={styles.sectionHeader}>{title}</Text>
+        <Text style={localStyles.sectionHeader}>{title}</Text>
     );
 
     return (
         <View style={styles.container}>
             <TextInput
-                style={styles.searchBox}
+                style={localStyles.searchBox}
                 placeholder="Search by note title..."
                 value={search}
                 onChangeText={handleSearch}
@@ -98,40 +99,21 @@ const Notes = ({ navigation }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 10,
-    },
+// Local styles specific to Notes screen
+const localStyles = StyleSheet.create({
     searchBox: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        paddingLeft: 10,
-        borderRadius: 5,
+        ...styles.input,
         marginBottom: 10,
     },
     sectionHeader: {
-        paddingTop: 2,
-        paddingLeft: 10,
-        paddingRight: 10,
-        paddingBottom: 2,
-        fontSize: 18,
-        fontWeight: 'bold',
-        backgroundColor: 'rgba(247,247,247,1.0)',
+        ...styles.sectionHeader,
     },
     itemContainer: {
-        backgroundColor: '#fff',
-        padding: 10,
+        ...styles.container,
         borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-    },
-    title: {
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    content: {
-        fontSize: 14,
+        borderBottomColor: styles.colors.grey,
+        padding: 10,
+        backgroundColor: styles.colors.white,
     }
 });
 

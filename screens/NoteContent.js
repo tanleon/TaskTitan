@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { updateNote, deleteNote } from "../services/Services";
+import styles from '../styles'; // Import global styles
 
 const NoteContent = ({ route, navigation }) => {
     const { noteId, title, content } = route.params;
@@ -34,62 +35,47 @@ const NoteContent = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <TextInput
-                style={styles.input}
+                style={localStyles.input}
                 onChangeText={setNoteTitle}
                 value={noteTitle}
                 placeholder="Note Title"
             />
             <TextInput
-                style={[styles.input, styles.inputContent]}
+                style={[localStyles.input, localStyles.inputContent]}
                 onChangeText={setNoteContent}
                 value={noteContent}
                 placeholder="Note Content"
                 multiline={true}
                 numberOfLines={4}
             />
-            <TouchableOpacity style={styles.button} onPress={handleUpdateNote}>
+            <TouchableOpacity style={localStyles.button} onPress={handleUpdateNote}>
                 <Text style={styles.buttonText}>Save Changes</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.deleteButton]} onPress={handleDeleteNote}>
+            <TouchableOpacity style={[localStyles.button, localStyles.deleteButton]} onPress={handleDeleteNote}>
                 <Text style={styles.buttonText}>Delete Note</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff',
-    },
+// Local styles specific to NoteContent
+const localStyles = StyleSheet.create({
     input: {
-        fontSize: 18,
-        borderColor: 'gray',
-        borderWidth: 1,
+        ...styles.input,
         marginBottom: 15,
-        padding: 10,
-        borderRadius: 5,
-        backgroundColor: 'white'
+        backgroundColor: 'white' // Example of overriding a specific style
     },
     inputContent: {
         height: 150,
         textAlignVertical: 'top',
     },
     button: {
-        backgroundColor: '#007BFF',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
+        ...styles.button,
         marginTop: 10,
     },
     deleteButton: {
-        backgroundColor: 'red',  // Make delete button red for caution
+        backgroundColor: 'red', // Example of adding specific styles for this component
     },
-    buttonText: {
-        color: 'white',
-        fontSize: 16,
-    }
 });
 
 export default NoteContent;

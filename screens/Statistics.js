@@ -92,23 +92,23 @@ const Statistics = () => {
     `;
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Tasks To Be Completed Over The Next Two Weeks</Text>
+        <View style={statstyles.container}>
+            <Text style={statstyles.header}>Tasks To Be Completed Over The Next Two Weeks</Text>
             <WebView
                 originWhitelist={['*']}
-                style={styles.webview}
+                style={statstyles.webview}
                 source={{ html: htmlContent }}
                 scalesPageToFit={false}
             />
-            <Text style={styles.summaryText}>Active Tasks: {activeTasksCount}</Text>
-            <Text style={styles.summaryText}>Completed Tasks: {completedTasksCount}</Text>
-            <Text style={styles.summaryText}>Total Tasks: {totalTasksCount}</Text>
-            <Text style={styles.summaryText}>Total Notes: {totalNotesCount}</Text>
+            <Text style={statstyles.summaryText}>Active Tasks: {activeTasksCount}</Text>
+            <Text style={statstyles.summaryText}>Completed Tasks: {completedTasksCount}</Text>
+            <Text style={statstyles.summaryText}>Total Tasks: {totalTasksCount}</Text>
+            <Text style={statstyles.summaryText}>Total Notes: {totalNotesCount}</Text>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
+const statstyles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20

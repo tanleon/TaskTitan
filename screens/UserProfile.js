@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import { useUser } from '../context/UserContext';
 import { updateProfile } from '../services/Services';
 import { useIsFocused } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import styles from '../styles';  // Import global styles
 
 const UserProfile = ({ navigation }) => {
     const { user, setUser, signOut } = useUser();
@@ -62,7 +63,7 @@ const UserProfile = ({ navigation }) => {
                 placeholder="Username"
                 autoCapitalize="none"
             />
-            <View style={styles.inputContainer}>
+            <View style={localStyles.inputContainer}>
                 <TextInput
                     style={[styles.input, { flex: 1 }]}
                     onChangeText={(text) => {
@@ -74,20 +75,20 @@ const UserProfile = ({ navigation }) => {
                     secureTextEntry={!passwordVisible}
                 />
                 <TouchableOpacity
-                    style={styles.icon}
+                    style={localStyles.icon}
                     onPress={() => setPasswordVisible(!passwordVisible)}
                 >
                     <Ionicons name={passwordVisible ? 'eye-off' : 'eye'} size={24} color="grey" />
                 </TouchableOpacity>
             </View>
             {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
-            <View style={styles.buttonContainer}>
+            <View style={localStyles.buttonContainer}>
                 <Button
                     title="Update Profile"
                     onPress={handleUpdate}
                     color="#0066ff"
                 />
-                <View style={styles.buttonSpacer} />
+                <View style={localStyles.buttonSpacer} />
                 <Button
                     title="Logout"
                     onPress={handleLogout}
@@ -98,44 +99,14 @@ const UserProfile = ({ navigation }) => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f9f9f9'
-    },
-    centered: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    header: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    input: {
-        width: '100%',
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 12,
-        padding: 10,
-        borderRadius: 5,
-        backgroundColor: '#fff'
-    },
+// Local styles specific to UserProfile screen
+const localStyles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     icon: {
         marginLeft: 10,
-    },
-    errorText: {
-        color: 'red',
-        marginBottom: 10,
     },
     buttonContainer: {
         width: '100%',
@@ -146,10 +117,6 @@ const styles = StyleSheet.create({
     buttonSpacer: {
         width: 10, // Space between buttons
     },
-    label: {
-        fontSize: 18,
-        marginBottom: 10
-    }
 });
 
 export default UserProfile;

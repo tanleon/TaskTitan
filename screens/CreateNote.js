@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { addNote, getTask } from "../services/Services";
+import styles from '../styles';
 
 const CreateNote = ({ route, navigation }) => {
     const { task_id } = route.params;
@@ -60,7 +61,7 @@ const CreateNote = ({ route, navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>{task ? task.title : 'Loading task...'}</Text>
+            <Text style={createNoteStyles.title}>{task ? task.title : 'Loading task...'}</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Note Title"
@@ -75,43 +76,24 @@ const CreateNote = ({ route, navigation }) => {
                 multiline
                 numberOfLines={4}
             />
-            <TouchableOpacity style={styles.button} onPress={handleSaveNote}>
-                <Text style={styles.buttonText}>Add Note</Text>
+            <TouchableOpacity style={createNoteStyles.button} onPress={handleSaveNote}>
+                <Text style={createNoteStyles.buttonText}>Add Note</Text>
             </TouchableOpacity>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-        backgroundColor: '#fff',
-    },
+const createNoteStyles = StyleSheet.create({
     title: {
-        fontSize: 24,
-        fontWeight: 'bold',
+        ...styles.text.title,
         marginBottom: 20,
     },
-    input: {
-        fontSize: 18,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 10,
-        padding: 10,
-        height: 50,
-        backgroundColor: 'white'
-    },
     button: {
-        backgroundColor: '#007BFF',
-        padding: 15,
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center'
+        ...styles.button,
+        marginTop: 20, // Override if needed
     },
     buttonText: {
-        color: 'white',
-        fontSize: 16,
+        ...styles.buttonText,
     }
 });
 

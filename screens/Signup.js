@@ -1,46 +1,42 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, StyleSheet, Alert } from 'react-native';
-import COLORS from '../constants/colors';
 import Checkbox from '@react-native-community/checkbox';
-import { insertUser } from "../services/Services";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { insertUser } from "../services/Services";
+import styles from '../styles'; // Import global styles
 
 const Signup = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isPasswordShown, setIsPasswordShown] = useState(true);
+    const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [usernameError, setUsernameError] = useState('');
 
     const handleSignUp = async () => {
-        console.log('Handling sign up...');
-
-        // Validate fields
         validateEmail();
         validatePassword();
         validateUsername();
 
         if (emailError || passwordError || usernameError) {
-            console.error('Validation errors exist.');
+            Alert.alert('Error', 'Please correct the errors before submitting.');
             return;
         }
 
         if (!isChecked) {
-            console.error('Please agree to the terms and conditions.');
+            Alert.alert('Error', 'Please agree to the terms and conditions.');
             return;
         }
 
         try {
             const user_id = await insertUser(username, email, password);
             if (user_id) {
-                console.log('User ID from insertUser:', user_id);
+                Alert.alert('Success', 'Account created successfully!');
                 navigation.navigate('Login');
             }
         } catch (error) {
-            console.error('Error registering user:', error);
             Alert.alert('Registration Error', error.message);
         }
     };
@@ -59,13 +55,12 @@ const Signup = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={styles.container}>
-            <View style={styles.innerContainer}>
-                <Text style={styles.title}>Create Account</Text>
-                <Text style={styles.subtitle}>Get started with TaskTitan!</Text>
-
-                <View style={styles.inputContainer}>
-                    <Text style={styles.label}>Username</Text>
+        <SafeAreaView style={localStyles.container}>
+            <View style={localStyles.innerContainer}>
+                <Text style={styles.text.title}>Create Account</Text>
+                <Text style={styles.text.subtitle}>Get started with TaskTitan!</Text>
+                <View style={localStyles.inputContainer}>
+                    <Text style={localStyles.label}>Username</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Enter your username'
@@ -73,11 +68,10 @@ const Signup = ({ navigation }) => {
                         onChangeText={setUsername}
                         onBlur={validateUsername}
                     />
-                    {usernameError ? <Text style={styles.errorText}>{usernameError}</Text> : null}
+                    {usernameError && <Text style={styles.text.error}>{usernameError}</Text>}
                 </View>
-
-                <View style={styles.inputContainer}>
-                    <Text style={styles.label}>Email address</Text>
+                <View style={localStyles.inputContainer}>
+                    <Text style={localStyles.label}>Email Address</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Enter your email'
@@ -86,45 +80,41 @@ const Signup = ({ navigation }) => {
                         onChangeText={setEmail}
                         onBlur={validateEmail}
                     />
-                    {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+                    {emailError && <Text style={styles.text.error}>{emailError}</Text>}
                 </View>
-
-                <View style={styles.inputContainer}>
-                    <Text style={styles.label}>Password</Text>
+                <View style={localStyles.inputContainer}>
+                    <Text style={localStyles.label}>Password</Text>
                     <TextInput
                         style={styles.input}
                         placeholder='Enter your password'
-                        secureTextEntry={isPasswordShown}
+                        secureTextEntry={!isPasswordShown}
                         value={password}
                         onChangeText={setPassword}
                         onBlur={validatePassword}
                     />
                     <TouchableOpacity
                         onPress={() => setIsPasswordShown(!isPasswordShown)}
-                        style={styles.iconPosition}
+                        style={localStyles.iconPosition}
                     >
-                        <Ionicons name={isPasswordShown ? "eye-off" : "eye"} size={24} color={COLORS.black} />
+                        <Ionicons name={isPasswordShown ? "eye-off" : "eye"} size={24} color={styles.colors.black} />
                     </TouchableOpacity>
-                    {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
+                    {passwordError && <Text style={styles.text.error}>{passwordError}</Text>}
                 </View>
-
-                <View style={styles.checkboxContainer}>
+                <View style={localStyles.checkboxContainer}>
                     <Checkbox
                         value={isChecked}
                         onValueChange={setIsChecked}
-                        color={isChecked ? COLORS.primary : undefined}
+                        color={isChecked ? styles.colors.primary : undefined}
                     />
-                    <Text style={styles.checkboxLabel}>I agree to the terms and conditions</Text>
+                    <Text style={localStyles.checkboxLabel}>I agree to the terms and conditions</Text>
                 </View>
-
                 <TouchableOpacity style={styles.button} onPress={handleSignUp}>
                     <Text style={styles.buttonText}>Sign Up</Text>
                 </TouchableOpacity>
-
-                <View style={styles.footer}>
-                    <Text style={styles.footerText}>Already have an account?</Text>
+                <View style={localStyles.footer}>
+                    <Text style={localStyles.footerText}>Already have an account?</Text>
                     <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                        <Text style={styles.signupText}>Login</Text>
+                        <Text style={localStyles.signupText}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -132,24 +122,15 @@ const Signup = ({ navigation }) => {
     );
 };
 
-const styles = StyleSheet.create({
+// Local styles specific to Signup screen
+const localStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: COLORS.white,
+        backgroundColor: styles.colors.white,
     },
     innerContainer: {
         flex: 1,
         marginHorizontal: 22,
-    },
-    title: {
-        fontSize: 22,
-        fontWeight: 'bold',
-        marginVertical: 12,
-        color: COLORS.black
-    },
-    subtitle: {
-        fontSize: 16,
-        color: COLORS.black
     },
     inputContainer: {
         marginBottom: 12,
@@ -159,21 +140,10 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         marginVertical: 8
     },
-    input: {
-        height: 48,
-        borderColor: COLORS.black,
-        borderWidth: 1,
-        borderRadius: 8,
-        padding: 10,
-        paddingRight: 40,
-    },
     iconPosition: {
         position: 'absolute',
-        right: 15,
-        top: 15
-    },
-    errorText: {
-        color: 'red',
+        right: 12,
+        top: 15,
     },
     checkboxContainer: {
         flexDirection: 'row',
@@ -183,18 +153,6 @@ const styles = StyleSheet.create({
     checkboxLabel: {
         marginLeft: 8
     },
-    button: {
-        backgroundColor: COLORS.primary,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 12,
-        borderRadius: 5,
-        marginTop: 10,
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 16,
-    },
     footer: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -202,11 +160,11 @@ const styles = StyleSheet.create({
     },
     footerText: {
         fontSize: 16,
-        color: COLORS.black,
+        color: styles.colors.black,
     },
     signupText: {
         fontSize: 16,
-        color: COLORS.primary,
+        color: styles.colors.primary,
         fontWeight: 'bold',
         marginLeft: 6
     }
