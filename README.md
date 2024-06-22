@@ -1,79 +1,49 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# TaskTitan
 
-# Getting Started
+TaskTitan is an advanced task management and productivity application designed to enhance efficiency and simplify project workflows. It integrates task scheduling, note-taking, statistical insights, and the Pomodoro technique into a user-friendly platform suitable for individuals and teams across various industries.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+TaskTitan integrates robust technologies like React Native for frontend development, SQLite for data management, and various APIs for cloud connectivity to provide a feature-rich, user-friendly experience in task management and productivity enhancement.
 
-## Step 1: Start the Metro Server
+## Key Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### User Authentication
+- **Secure Login/Logout**: Ensures that user accounts are protected and access is securely managed.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### Task Management
+- **Task Creation and Tracking**: Effortlessly create and track tasks with detailed attributes such as deadlines, priorities, and statuses.
+- **Custom Labels and Filters**: Enhance task organization through active and completed labels and sorting based on due date and title of tasks.
 
-```bash
-# using npm
-npm start
+### Note-Taking Functionality
+- **Text Notes**: Create detailed notes linked to tasks or support basic rich text for comprehensive information capture.
+- **Organizational Features**: Categorize and search notes, making it easy to manage large volumes of information.
 
-# OR using Yarn
-yarn start
-```
+### Statistical Insights
+- **Performance Dashboard**: Provides visual statistics on tasks’ due dates and overall stats, helping users stay informed about their productivity and task completion trends.
 
-## Step 2: Start your Application
+### Pomodoro Timer
+- **Focus Enhancement**: Incorporates the Pomodoro technique to encourage focused work sessions, followed by short breaks, optimizing productivity.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### Navigation Options
+- **Bottom Tab Navigation**: Quick access to tasks, notes, statistics, and the Pomodoro timer, facilitating smooth transitions between different functionalities.
+- **Drawer Navigation**: Provides an organized menu for additional settings and features, enhancing the overall user experience.
 
-### For Android
+TaskTitan is essential for anyone looking to streamline their tasks, harness rich data insights, and improve time management through an all-encompassing platform that adapts to the evolving needs of modern users.
 
-```bash
-# using npm
-npm run android
 
-# OR using Yarn
-yarn android
-```
+## Screeshots
 
-### For iOS
+![Not Found](./Screenshots/Img1.png)
+![Not Found](./Screenshots/image3.png)
+![Not Found](./Screenshots/image4.png)
+![Not Found](./Screenshots/image5.png)
+![Not Found](./Screenshots/image6.png)
+![Not Found](./Screenshots/image7.png)
+![Not Found](./Screenshots/image8.png)
+![Not Found](./Screenshots/image9.png)
+![Not Found](./Screenshots/image10.png)
+![Not Found](./Screenshots/image11.png)
+![Not Found](./Screenshots/image12.png)
+![Not Found](./Screenshots/image13.png)
+![Not Found](./Screenshots/image14.png)
+![Not Found](./Screenshots/image15.png)
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
