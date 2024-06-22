@@ -2,6 +2,8 @@
 
 TaskTitan is an advanced task management and productivity application designed to enhance efficiency and simplify project workflows. It integrates task scheduling, note-taking, statistical insights, and the Pomodoro technique into a user-friendly platform suitable for individuals and teams across various industries.
 
+TaskTitan integrates robust technologies like React Native for frontend development, SQLite for data management, and various APIs for cloud connectivity to provide a feature-rich, user-friendly experience in task management and productivity enhancement.
+
 ## Key Features
 
 ### User Authentication
