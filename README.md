@@ -3,9 +3,9 @@
 TaskTitan is an advanced task management and productivity application designed to enhance efficiency and simplify project workflows. It integrates task scheduling, note-taking, statistical insights, and the Pomodoro technique into a user-friendly platform suitable for individuals and teams across various industries.
 
 # Technologies Used:
-•	Frontend Development: Utilized Javascript using the React Native framework to create a responsive and intuitive user interface.
-•	Data Management: Implemented SQLite for robust and efficient data handling.
-•	Cloud Connectivity: Leveraged various APIs such as REST API, WebSocket API, and OpenWeatherMap API to enable seamless cloud integration and connectivity.
+-	Frontend Development: Utilized Javascript using the React Native framework to create a responsive and intuitive user interface.
+-	Data Management: Implemented SQLite for robust and efficient data handling.
+-	Cloud Connectivity: Leveraged various APIs such as REST API, WebSocket API, and OpenWeatherMap API to enable seamless cloud integration and connectivity.
 
 ## Key Features
 
