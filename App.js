@@ -4,11 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LogBox } from 'react-native';
-
-// Context
+import styles from './styles';
 import { UserProvider } from './context/UserContext';
 
 // Import task management screens
@@ -25,6 +23,7 @@ import NoteContent from "./screens/NoteContent";
 import Statistics from "./screens/Statistics";
 import Pomodoro from "./screens/Pomodoro";
 import Feedback from "./screens/Feedback";
+import Weather from "./screens/Weather";
 
 LogBox.ignoreLogs(['EventEmitter.removeListener']);
 
@@ -32,75 +31,40 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-const styles = StyleSheet.create({
-  drawerContent: {
-    flex: 1,
-    backgroundColor: '#FF8551',
-  },
-  logoContainer: {
-    alignSelf: 'center',
-    marginTop: 20,
-    marginBottom: 10,
-    width: '100%', // Ensure the container uses the full width of the drawer
-    alignItems: 'center', // Center the logo horizontally
-  },
-  logo: {
-    width: 280, // Adjusted width to fit within the drawer
-    height: 280 * (71 / 340), // Maintain aspect ratio
-  },
-  profileText: {
-    color: 'white',
-    fontSize: 20,
-    alignSelf: 'center',
-    marginBottom: 20,
-  },
-  menuItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 10,
-  },
-  menuItemText: {
-    fontSize: 23,
-    color: 'white',
-    marginLeft: 10,
-  }
-});
-
 const CustomDrawerContent = (props) => {
   return (
-    <DrawerContentScrollView {...props} style={styles.drawerContent}>
-      <View style={styles.logoContainer}>
+    <DrawerContentScrollView {...props} style={{ backgroundColor: '#FF8551' }}>
+      <View style={{alignSelf: 'center', marginTop: 20, marginBottom: 10, width: '100%', alignItems: 'center'}}>
         <Image
-          style={styles.logo}
+          style={{width: 280, height: 280 * (71 / 340)}}
           source={require('./assets/TaskTitanLogo.png')}
           resizeMode="contain"
         />
       </View>
-      <Text style={styles.profileText}>Primed for productivity</Text>
+      <Text style={[styles.text.subtitle, {alignSelf: 'center', marginBottom: 20, fontWeight: 'bold', fontSize: 20, color: 'blue'}]}>Primed for Productivity</Text>
       <TouchableOpacity
-        style={styles.menuItem}
+        style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 10}}
         onPress={() => props.navigation.navigate('Profile')}>
-        <Ionicons name="person-outline" size={23} color="white" />
-        <Text style={styles.menuItemText}>Profile</Text>
+        <Ionicons name="person-outline" size={30} color="blue" />
+        <Text style={[styles.text.subtitle, {marginLeft: 10, fontWeight: 'bold', fontSize: 20, color: 'black'}]}>Profile</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.menuItem}
+        style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 10}}
         onPress={() => props.navigation.navigate('Feedback')}>
-        <Ionicons name="mail-outline" size={23} color="white" />
-        <Text style={styles.menuItemText}>Send Feedback</Text>
+        <Ionicons name="mail-outline" size={30} color="blue" />
+        <Text style={[styles.text.subtitle, {marginLeft: 10, fontWeight: 'bold', fontSize: 20, color: 'black'}]}>Send Feedback</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.menuItem}
+        style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 10}}
         onPress={() => props.navigation.navigate('Login')}>
-        <Ionicons name="exit-outline" size={23} color="white" />
-        <Text style={styles.menuItemText}>Switch Account</Text>
+        <Ionicons name="exit-outline" size={30} color="blue" />
+        <Text style={[styles.text.subtitle, {marginLeft: 10, fontWeight: 'bold', fontSize: 20, color: 'black'}]}>Switch Account</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={styles.menuItem}
+        style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 10}}
         onPress={() => props.navigation.navigate('Home')}>
-        <Ionicons name="list" size={23} color="white" />
-        <Text style={styles.menuItemText}>Back to Home</Text>
+        <Ionicons name="list" size={30} color="blue" />
+        <Text style={[styles.text.subtitle, {marginLeft: 10, fontWeight: 'bold', fontSize: 20, color: 'black'}]}>Back to Home</Text>
       </TouchableOpacity>
     </DrawerContentScrollView>
   );
@@ -113,10 +77,11 @@ const HomeTabs = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           switch (route.name) {
-            case 'TabTasks': iconName = focused ? 'list' : 'list-outline'; break;
-            case 'TabNotes': iconName = focused ? 'book' : 'book-outline'; break;
-            case 'TabStatistics': iconName = focused ? 'stats-chart' : 'stats-chart-outline'; break;
-            case 'TabPomodoro': iconName = focused ? 'timer' : 'timer-outline'; break;
+            case 'Tasks': iconName = focused ? 'list' : 'list-outline'; break;
+            case 'Notes': iconName = focused ? 'book' : 'book-outline'; break;
+            case 'Statistics': iconName = focused ? 'stats-chart' : 'stats-chart-outline'; break;
+            case 'Pomodoro': iconName = focused ? 'timer' : 'timer-outline'; break;
+            case 'Weather': iconName = focused ? 'cloud' : 'cloud-outline'; break;
             default: break;
           }
           return <Ionicons name={iconName} size={size} color={color} />;
@@ -126,10 +91,11 @@ const HomeTabs = () => {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="TabTasks" component={TaskList} options={{ title: 'Tasks' }} />
-      <Tab.Screen name="TabNotes" component={Notes} options={{ title: 'Notes' }} />
-      <Tab.Screen name="TabStatistics" component={Statistics} options={{ title: 'Statistics' }} />
-      <Tab.Screen name="TabPomodoro" component={Pomodoro} options={{ title: 'Pomodoro' }} />
+      <Tab.Screen name="Tasks" component={TaskList} options={{ title: 'Tasks' }} />
+      <Tab.Screen name="Notes" component={Notes} options={{ title: 'Notes' }} />
+      <Tab.Screen name="Statistics" component={Statistics} options={{ title: 'Statistics' }} />
+      <Tab.Screen name="Pomodoro" component={Pomodoro} options={{ title: 'Pomodoro' }} />
+      <Tab.Screen name="Weather" component={Weather} options={{ title: 'Weather' }} />
     </Tab.Navigator>
   );
 };
@@ -148,7 +114,6 @@ const DrawerNavigator = () => (
   </Drawer.Navigator>
 );
 
-
 export default function App() {
   return (
     <UserProvider>
@@ -158,6 +123,7 @@ export default function App() {
           <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={DrawerNavigator} options={{ headerShown: false }} />
           <Stack.Screen name="TaskDetails" component={TaskDetails} />
+          <Stack.Screen name="CreateTask" component={CreateTask} />
           <Stack.Screen name="CreateNote" component={CreateNote} />
           <Stack.Screen name="NoteList" component={NoteList} />
           <Stack.Screen name="NoteContent" component={NoteContent} />
