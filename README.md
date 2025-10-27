@@ -33,18 +33,42 @@ TaskTitan is an advanced task management and productivity application designed t
 TaskTitan is essential for anyone looking to streamline their tasks, harness rich data insights, and improve time management through an all-encompassing platform that adapts to the evolving needs of modern users.
 
 
-## Screeshots
+### Screenshots
+<!-- Screenshot 1 -->
+<img src="./Screenshots/Img1.png" alt="Screenshot 1" width="320" />
 
-![Not Found](./Screenshots/image3.png)
-![Not Found](./Screenshots/image4.png)
-![Not Found](./Screenshots/image5.png)
-![Not Found](./Screenshots/image6.png)
-![Not Found](./Screenshots/image7.png)
-![Not Found](./Screenshots/image8.png)
-![Not Found](./Screenshots/image9.png)
-![Not Found](./Screenshots/image10.png)
-![Not Found](./Screenshots/image11.png)
-![Not Found](./Screenshots/image12.png)
-![Not Found](./Screenshots/image13.png)
-![Not Found](./Screenshots/image15.png)
+<!-- Screenshot 2 -->
+<img src="./Screenshots/image3.png" alt="Screenshot 2" width="320" />
 
+<!-- Screenshot 3 -->
+<img src="./Screenshots/image4.png" alt="Screenshot 3" width="320" />
+
+<!-- Screenshot 4 -->
+<img src="./Screenshots/image5.png" alt="Screenshot 4" width="320" />
+
+<!-- Screenshot 5 -->
+<img src="./Screenshots/image6.png" alt="Screenshot 5" width="320" />
+
+<!-- Screenshot 6 -->
+<img src="./Screenshots/image7.png" alt="Screenshot 6" width="320" />
+
+<!-- Screenshot 7 -->
+<img src="./Screenshots/image8.png" alt="Screenshot 7" width="320" />
+
+<!-- Screenshot 8 -->
+<img src="./Screenshots/image9.png" alt="Screenshot 8" width="320" />
+
+<!-- Screenshot 9 -->
+<img src="./Screenshots/image10.png" alt="Screenshot 9" width="320" />
+
+<!-- Screenshot 10 -->
+<img src="./Screenshots/image11.png" alt="Screenshot 10" width="320" />
+
+<!-- Screenshot 11 -->
+<img src="./Screenshots/image12.png" alt="Screenshot 11" width="320" />
+
+<!-- Screenshot 12 -->
+<img src="./Screenshots/image13.png" alt="Screenshot 12" width="320" />
+
+<!-- Screenshot 13 -->
+<img src="./Screenshots/image15.png" alt="Screenshot 13" width="320" />
