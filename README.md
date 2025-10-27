@@ -34,41 +34,30 @@ TaskTitan is essential for anyone looking to streamline their tasks, harness ric
 
 
 ### Screenshots
-<!-- Screenshot 1 -->
-<img src="./Screenshots/Img1.png" alt="Screenshot 1" width="320" />
-
-<!-- Screenshot 2 -->
-<img src="./Screenshots/image3.png" alt="Screenshot 2" width="320" />
-
-<!-- Screenshot 3 -->
-<img src="./Screenshots/image4.png" alt="Screenshot 3" width="320" />
-
-<!-- Screenshot 4 -->
-<img src="./Screenshots/image5.png" alt="Screenshot 4" width="320" />
-
-<!-- Screenshot 5 -->
-<img src="./Screenshots/image6.png" alt="Screenshot 5" width="320" />
-
-<!-- Screenshot 6 -->
-<img src="./Screenshots/image7.png" alt="Screenshot 6" width="320" />
-
-<!-- Screenshot 7 -->
-<img src="./Screenshots/image8.png" alt="Screenshot 7" width="320" />
-
-<!-- Screenshot 8 -->
-<img src="./Screenshots/image9.png" alt="Screenshot 8" width="320" />
-
-<!-- Screenshot 9 -->
-<img src="./Screenshots/image10.png" alt="Screenshot 9" width="320" />
-
-<!-- Screenshot 10 -->
-<img src="./Screenshots/image11.png" alt="Screenshot 10" width="320" />
-
-<!-- Screenshot 11 -->
-<img src="./Screenshots/image12.png" alt="Screenshot 11" width="320" />
-
-<!-- Screenshot 12 -->
-<img src="./Screenshots/image13.png" alt="Screenshot 12" width="320" />
-
-<!-- Screenshot 13 -->
-<img src="./Screenshots/image15.png" alt="Screenshot 13" width="320" />
+<table cellpadding="10" cellspacing="0" style="border-collapse: collapse;">
+  <tr>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/Img1.png" alt="Screenshot 1" width="320"></td>
+    <td><img src="./Screenshots/image3.png" alt="Screenshot 2" width="320"></td>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/image4.png" alt="Screenshot 3" width="320"></td>
+  </tr>
+  <tr>
+    <td><img src="./Screenshots/image5.png" alt="Screenshot 4" width="320"></td>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/image6.png" alt="Screenshot 5" width="320"></td>
+    <td><img src="./Screenshots/image7.png" alt="Screenshot 6" width="320"></td>
+  </tr>
+  <tr>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/image8.png" alt="Screenshot 7" width="320"></td>
+    <td><img src="./Screenshots/image9.png" alt="Screenshot 8" width="320"></td>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/image10.png" alt="Screenshot 9" width="320"></td>
+  </tr>
+  <tr>
+    <td><img src="./Screenshots/image11.png" alt="Screenshot 10" width="320"></td>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/image12.png" alt="Screenshot 11" width="320"></td>
+    <td><img src="./Screenshots/image13.png" alt="Screenshot 12" width="320"></td>
+  </tr>
+  <tr>
+    <td style="background-color: #f0f0f0;"><img src="./Screenshots/image15.png" alt="Screenshot 13" width="320"></td>
+    <td><!-- Empty cell --></td>
+    <td style="background-color: #f0f0f0;"><!-- Empty cell --></td>
+  </tr>
+</table>
