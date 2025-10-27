@@ -35,7 +35,6 @@ TaskTitan is essential for anyone looking to streamline their tasks, harness ric
 
 ## Screeshots
 
-![Not Found](./Screenshots/Img1.png)
 ![Not Found](./Screenshots/image3.png)
 ![Not Found](./Screenshots/image4.png)
 ![Not Found](./Screenshots/image5.png)
@@ -47,6 +46,5 @@ TaskTitan is essential for anyone looking to streamline their tasks, harness ric
 ![Not Found](./Screenshots/image11.png)
 ![Not Found](./Screenshots/image12.png)
 ![Not Found](./Screenshots/image13.png)
-![Not Found](./Screenshots/image14.png)
 ![Not Found](./Screenshots/image15.png)
 
